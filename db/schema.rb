@@ -13,9 +13,9 @@
 ActiveRecord::Schema.define(version: 2019_03_10_015427) do
 
   create_table "pokemons", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "name"
-    t.float "height"
-    t.float "weight"
+    t.string "identifier"
+    t.integer "height"
+    t.integer "weight"
     t.integer "base_experience"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
