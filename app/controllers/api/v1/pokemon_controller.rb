@@ -18,14 +18,16 @@ module Api
       end
 
       def update
-        render json: {}
-      end
-
-      def delete
         pokemon = Pokemon.find(params[:id])
-        pokemon.destroy
+        pokemon.update_attributes(pokemon_params)
 
         render json: pokemon
+      end
+
+      def destroy
+        pokemon = Pokemon.find(params[:id])
+
+        render json: pokemon.destroy
       end
 
       private
