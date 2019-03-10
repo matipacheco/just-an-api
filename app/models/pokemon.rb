@@ -1,3 +1,1 @@
-class Pokemon < ApplicationRecord
-
-end
+class Pokemon < ApplicationRecord; end
