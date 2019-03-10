@@ -12,9 +12,7 @@ module Api
       end
 
       def create
-        pokemon = Pokemon.new
-        pokemon.update_attributes(params[:pokemon])
-        pokemon.save
+        pokemon = Pokemon.create(pokemon_params)
 
         render json: pokemon
       end
@@ -28,6 +26,12 @@ module Api
         pokemon.destroy
 
         render json: pokemon
+      end
+
+      private
+
+      def pokemon_params
+        params.require(:pokemon).permit(:identifier, :height, :weight, :base_experience)
       end
     end
   end
