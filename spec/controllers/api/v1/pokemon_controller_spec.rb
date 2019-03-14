@@ -21,21 +21,22 @@ describe Api::V1::PokemonController, type: :api do
   end
 end
 
-# describe Api::V1::PokemonController, type: :api do
-#   context 'Testing POST method' do
-#     before do
-#       balbasaar = {
-#         "identifier": "Balbasaar",
-#         "height": 1,
-#         "weight": 1,
-#         "base_experience": 1
-#       }
-#
-#       post '/api/v1/pokemon', params: balbasaar
-#     end
-#
-#     it 'should respond with Balbasaar data' do
-#       expect(last_response.body).to eq('')
-#     end
-#   end
-# end
+describe Api::V1::PokemonController, type: :api do
+  context 'Bulbasaur, I... update you (?)' do
+    before do
+      put '/api/v1/pokemon/1', pokemon: { "height": 1 }
+    end
+
+    it 'should respond with Bulbasaurs updated data' do
+      bulbasaur = {
+          "id": 1,
+          "identifier": "bulbasaur",
+          "height": 1,
+          "weight": 69,
+          "base_experience": 64
+      }
+
+      expect(last_response.body).to eq(bulbasaur.to_json)
+    end
+  end
+end
