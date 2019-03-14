@@ -7,7 +7,7 @@ describe Api::V1::PokemonController, type: :api do
       get '/api/v1/pokemon/1'
     end
 
-    it 'should respond with Bulbasaur data' do
+    it 'should respond with Bulbasaurs data' do
       bulbasaur = {
           "id": 1,
           "identifier": "bulbasaur",
@@ -37,6 +37,28 @@ describe Api::V1::PokemonController, type: :api do
       }
 
       expect(last_response.body).to eq(bulbasaur.to_json)
+    end
+  end
+end
+
+describe Api::V1::PokemonController, type: :api do
+  suki = {
+      "identifier": 'Suki',
+      "height": 1,
+      "weight": 10,
+      "base_experience": 0
+  }
+
+  context 'Suki, I create you!' do
+    before do
+      post '/api/v1/pokemon', pokemon: suki
+    end
+
+    it 'should respond with Bulbasaurs updated data' do
+      response = JSON.parse last_response.body
+      response.delete 'id'
+
+      expect(response.to_json).to eq(suki.to_json)
     end
   end
 end
