@@ -6,6 +6,7 @@ module Api
       end
 
       def show
+        # https://www.thegreatcodeadventure.com/rails-api-painless-error-handling-and-rendering-2/
         pokemon = Pokemon.find(params[:id])
 
         render json: pokemon
