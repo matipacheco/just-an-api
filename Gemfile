@@ -28,8 +28,11 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 gem 'mysql2'
 
+gem 'active_model_serializers'
+
 group :development, :test do
   gem 'pry-rails'
+  gem 'rspec-rails'
 end
 
 group :development do
