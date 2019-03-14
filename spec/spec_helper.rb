@@ -17,8 +17,8 @@ require 'rails_helper'
 
 RSpec.configure do |config|
   config.include JustAnApiHelper, type: :api
-  config.include Request.JsonHelper, type: :api
-  
+  config.include Request::JsonHelper, type: :api
+
   # rspec-expectations config goes here. You can use an alternate
   # assertion/expectation library such as wrong or the stdlib/minitest
   # assertions if you prefer.
