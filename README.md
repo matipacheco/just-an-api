@@ -1,24 +1,40 @@
-# README
+# Just ~~a Pokemon~~ an API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This project was created with the only purpose of learn and  play around with some specific RoR features that I didn't knew, such as:
 
-Things you may want to cover:
+- Ruby 2.5
+- API development using Rails 5
+- API testing using Ruby
+- Learn about strong params
+- Serialization using Rails
 
-* Ruby version
+## Setup
 
-* System dependencies
+* Ruby version:
 
-* Configuration
+        2.5.1
+
+* System dependencies:
+        
+        rvm use 2.1.1
+        rvm gemset create just-an-api
+        rvm gemset use just-an-api
+        gem install bundler
+        bundle install
 
 * Database creation
 
+        rake db:create
+        rake db:migrate
+
 * Database initialization
+
+        rake db:seed
 
 * How to run the test suite
 
-* Services (job queues, cache servers, search engines, etc.)
+        bundle exec rspec
 
-* Deployment instructions
+* Run the API
 
-* ...
+        rails s
