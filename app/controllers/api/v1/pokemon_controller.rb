@@ -2,33 +2,55 @@ module Api
   module V1
     class PokemonController < ApplicationController
       def index
-        render json: Pokemon.all
+        begin
+          render json: Pokemon.all
+
+        rescue Exception => e
+          render json: { code: 500, message: e.message }
+        end
       end
 
       def show
-        # https://www.thegreatcodeadventure.com/rails-api-painless-error-handling-and-rendering-2/
-        pokemon = Pokemon.find(params[:id])
+        begin
+          pokemon = Pokemon.find(params[:id])
+          render json: pokemon
 
-        render json: pokemon
+        rescue Exception => e
+          render json: { code: 500, message: e.message }
+        end
       end
 
       def create
-        pokemon = Pokemon.create(pokemon_params)
+        begin
+          pokemon = Pokemon.create(pokemon_params)
+          render json: pokemon
 
-        render json: pokemon
+        rescue Exception => e
+          render json: { code: 500, message: e.message }
+        end
       end
 
       def update
-        pokemon = Pokemon.find(params[:id])
-        pokemon.update_attributes(pokemon_params)
+        begin
+          pokemon = Pokemon.find(params[:id])
+          pokemon.update_attributes(pokemon_params)
 
-        render json: pokemon
+          render json: pokemon
+
+        rescue Exception => e
+          render json: { code: 500, message: e.message }
+        end
       end
 
       def destroy
-        pokemon = Pokemon.find(params[:id])
+        begin
+          pokemon = Pokemon.find(params[:id])
 
-        render json: pokemon.destroy
+          render json: pokemon.destroy
+
+        rescue Exception => e
+          render json: { code: 500, message: e.message }  
+        end
       end
 
       private
